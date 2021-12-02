@@ -154,36 +154,36 @@
 # p all?([]) { |value| false } == true
 
 
-# # 8. Iterators True for None?
+# 8. Iterators True for None?
 
-# # def none?(arr)
-# #   arr.each do |item|
-# #     return false if yield(item)
-# #   end
-# #   true
-# # end
-
-# # model solution
-
-# def any?(arr)
-#   arr.each do |element|
-#     return true if yield(element)
+# def none?(arr)
+#   arr.each do |item|
+#     return false if yield(item)
 #   end
+#   true
+# end
+
+# model solution
+
+def any?(arr)
+  arr.each do |element|
+    return true if yield(element)
+  end
   
-#   false
-# end
+  false
+end
 
-# def none?(collection, &block)
-#   !any?(collection, &block)
-# end
+def none?(collection, &block)
+  !any?(collection, &block)
+end
 
-# p none?([1, 3, 5, 6]) { |value| value.even? } == false
-# p none?([1, 3, 5, 7]) { |value| value.even? } == true
-# p none?([2, 4, 6, 8]) { |value| value.odd? } == true
-# p none?([1, 3, 5, 7]) { |value| value % 5 == 0 } == false
-# p none?([1, 3, 5, 7]) { |value| true } == false
-# p none?([1, 3, 5, 7]) { |value| false } == true
-# p none?([]) { |value| true } == true
+p none?([1, 3, 5, 6]) { |value| value.even? } == false
+p none?([1, 3, 5, 7]) { |value| value.even? } == true
+p none?([2, 4, 6, 8]) { |value| value.odd? } == true
+p none?([1, 3, 5, 7]) { |value| value % 5 == 0 } == false
+p none?([1, 3, 5, 7]) { |value| true } == false
+p none?([1, 3, 5, 7]) { |value| false } == true
+p none?([]) { |value| true } == true
 
 
 # # 9. Iterators: True for One?
@@ -208,34 +208,34 @@
 # p one?([]) { |value| true }                     # -> false
 
 
-# 10. Count items
+# # 10. Count items
+
+# # def count(arr)
+# #   counter = 0
+  
+# #   arr.each do |item|
+# #     counter += 1 if yield(item)
+# #   end
+  
+# #   counter
+# # end
+
+# # solution without inbuilt iterator
 
 # def count(arr)
-#   counter = 0
+#   count = 0
   
-#   arr.each do |item|
-#     counter += 1 if yield(item)
+#   for i in arr
+#     count += 1 if yield(i)
 #   end
   
-#   counter
+#   count
 # end
 
-# solution without inbuilt iterator
-
-def count(arr)
-  count = 0
-  
-  for i in arr
-    count += 1 if yield(i)
-  end
-  
-  count
-end
-
-p count([1,2,3,4,5]) { |value| value.odd? } == 3
-p count([1,2,3,4,5]) { |value| value % 3 == 1 } == 2
-p count([1,2,3,4,5]) { |value| true } == 5
-p count([1,2,3,4,5]) { |value| false } == 0
-p count([]) { |value| value.even? } == 0
-p count(%w(Four score and seven)) { |value| value.size == 5 } == 2
+# p count([1,2,3,4,5]) { |value| value.odd? } == 3
+# p count([1,2,3,4,5]) { |value| value % 3 == 1 } == 2
+# p count([1,2,3,4,5]) { |value| true } == 5
+# p count([1,2,3,4,5]) { |value| false } == 0
+# p count([]) { |value| value.even? } == 0
+# p count(%w(Four score and seven)) { |value| value.size == 5 } == 2
 
